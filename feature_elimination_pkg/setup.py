@@ -8,7 +8,7 @@ setup(
     version="0.1",
     author="Kynon JM Benjamin and Apua CM Paquola",
     author_email="kj.benjamin90@gmail.com",
-    decription="A package to preform feature elimination for random forest",
+    description="A package to preform feature elimination for random forest",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/KrotosBenjamin/erwin_paquola/tree/master/feature_elimination_pkg",
