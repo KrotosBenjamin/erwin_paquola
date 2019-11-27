@@ -1,5 +1,5 @@
 * Software Repository
 | Name                | Description                                                   | Environment |
 |---------------------+---------------------------------------------------------------+-------------|
-| feature_elimination | Random forest, sklearn dependent, feature elimination package | Python      |
+| feature_elimination_pkg | Random forest, sklearn dependent, feature elimination package | Python      |
 |                     |                                                               |             |
