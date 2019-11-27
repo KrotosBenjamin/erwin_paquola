@@ -1,5 +1,6 @@
 * Software Repository
-| Name                | Description                                                   | Environment |
-|---------------------+---------------------------------------------------------------+-------------|
+| Name                    | Description                                                   | Environment |
+|-------------------------+---------------------------------------------------------------+-------------|
 | feature_elimination_pkg | Random forest, sklearn dependent, feature elimination package | Python      |
-|                     |                                                               |             |
+| linmod                  | Test R package of a linear regression model                   | R           |
+|                         |                                                               |             |
