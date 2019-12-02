@@ -12,7 +12,9 @@ setup(name='jupy',
       author="Kynon Benjamin & Apuã Paquola",
       author_email="kj.benjamin90@gmail.com",
       decription="A utility to launch jupyter lab remotely.",
-      long_description="A ultity that automatically finds an available port, ssh into the server, and calls jupyter lab.",
+      package_data={
+          '': ['*org'],
+      },
       url="https://github.com/KrotosBenjamin/erwin_paquola/tree/master/jupy",
       license='GPLv3',
       classifiers=[

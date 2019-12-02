@@ -8,7 +8,7 @@ Please install on your computer and host server to automatically download jupyte
 Authors: Apuã Paquola, Kynon Benjamin
 
 ** Installation
-=pip install --user=
+=pip install --user -i https://test.pypi.org/simple/ jupy=
 
 Requires: =ssh= and =ss=
 
