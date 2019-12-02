@@ -1,12 +1,12 @@
 Metadata-Version: 1.1
 Name: jupy
-Version: 0.2
+Version: 0.2.1
 Summary: UNKNOWN
 Home-page: https://github.com/KrotosBenjamin/erwin_paquola/tree/master/jupy
-Author: Kynon Benjamin & Apuã Paquola
+Author: Kynon Benjamin
 Author-email: kj.benjamin90@gmail.com
-License: GPLv3
-Description: A ultity that automatically finds an available port, ssh into the server, and calls jupyter lab.
+License: UNKNOWN
+Description: UNKNOWN
 Keywords: jupyter jupyterlab ssh remote
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3

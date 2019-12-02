@@ -9,11 +9,11 @@ setup(name='jupy',
           'jupyterlab>=1.2.3',
           'argparse>=1.1'
       ],
-      author="Kynon Benjamin & Apuã Paquola",
+      author="Kynon Benjamin",
       author_email="kj.benjamin90@gmail.com",
       decription="A utility to launch jupyter lab remotely.",
       package_data={
-          '': ['*rst'],
+          '': ['*rst', '*org'],
       },
       url="https://github.com/KrotosBenjamin/erwin_paquola/tree/master/jupy",
       # license='GPLv3',
