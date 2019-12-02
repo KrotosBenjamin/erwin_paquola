@@ -1,9 +1,0 @@
-README.rst
-jupy
-setup.py
-jupy.egg-info/PKG-INFO
-jupy.egg-info/SOURCES.txt
-jupy.egg-info/dependency_links.txt
-jupy.egg-info/not-zip-safe
-jupy.egg-info/requires.txt
-jupy.egg-info/top_level.txt
