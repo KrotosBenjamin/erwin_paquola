@@ -1,6 +1,6 @@
 * jupy - A utility to launch jupyter lab remotely.
 
-This utility automatically finds an available port via *ss*, *ssh* into the server, making an ssh tunnel,
+*jupy* is a utility automatically finds an available port via *ss*, *ssh* into the server, making an ssh tunnel,
 calls jupyter lab.
 
 Please install on your computer and host server to automatically download jupyter lab.
@@ -8,7 +8,9 @@ Please install on your computer and host server to automatically download jupyte
 Authors: Apuã Paquola, Kynon Benjamin
 
 ** Installation
-=pip install --user -i https://test.pypi.org/simple/ jupy=
+Please install locally.
+
+=pip install --user jupy=
 
 Requires: =ssh= and =ss=
 
@@ -25,6 +27,8 @@ Does not currently work for Mac OS.
 | --default-port | localhost port               | 8888       |
 
 ** Change logs
+*** v0.2.1
+  - Added version flag
 *** v0.2
   - Launches jupyter-lab instead of jupyter-notebook
   - added function to specify username, default is to use local username

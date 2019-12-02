@@ -7,8 +7,6 @@ jupy - A utility to launch jupyter lab remotely.
 **jupy** is a utility that automatically finds an available port via **ss**, **ssh**
 into the server, making an ssh tunnel, calls jupyter lab.
 
-Written by Apuã Paquola and Kynon Benjamin.
-
 Please install on your computer and host server to automatically
 download jupyter lab.
 
@@ -17,7 +15,7 @@ Authors: Apuã Paquola, Kynon Benjamin
 Installation
 ------------
 
-``pip install --user -i https://test.pypi.org/simple/ jupy``
+``pip install --user jupy``
 
 Requires: ``ssh`` and ``ss``
 
