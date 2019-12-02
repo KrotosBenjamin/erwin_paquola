@@ -17,7 +17,7 @@ setup(name='jupy',
       license='GPLv3',
       classifiers=[
           "Programming Language :: Python :: 3",
-          "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+          "License :: OSI Approved :: GNU General Public License v3",
       ],
       keywords='jupyter jupyterlab ssh remote',
       zip_safe=False)
