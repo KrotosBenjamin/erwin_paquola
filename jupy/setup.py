@@ -26,14 +26,15 @@ Manual
 
 ``usage: jupy [-h] [--host HOST] [--dir DIR] [--username USERNAME] [--default-port DEFAULT_PORT]``
 
-============= ============================ ==========
+============== ============================ ==========
 Flag          Description                  Example
-============= ============================ ==========
-–host         server to ssh                1.1.1.1
-–dir          directory to run jupyter lab /ceph
-–username     username on server           myusername
-–default-port localhost port               8888
-============= ============================ ==========
+============== ============================ ==========
+-–host         server to ssh                1.1.1.1
+-–dir          directory to run jupyter lab /ceph
+-–username     username on server           myusername
+-–default-port localhost port               8888
+--version, -v  print version                jupy 0.2.1
+============== ============================ ==========
 
 Change logs
 -----------
