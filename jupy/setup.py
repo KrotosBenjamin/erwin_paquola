@@ -40,7 +40,7 @@ Flag          Description                  Example
 Change logs
 -----------
 v0.2.1
-----
+------
 
 -  Added version flag
 
@@ -63,6 +63,7 @@ setup(name='jupy',
       author_email="kj.benjamin90@gmail.com",
       decription="A utility to launch jupyter lab remotely.",
       long_description=LONG_DESCRIPTION,
+      long_description_content_type='text/x-rst',
       package_data={
           '': ['*org'],
       },
