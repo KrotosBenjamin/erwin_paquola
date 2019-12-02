@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(name='jupy',
-      version='0.2',
+      version='0.2.1',
       packages=find_packages(),
       scripts=['jupy'],
       install_requires=[
@@ -13,13 +13,13 @@ setup(name='jupy',
       author_email="kj.benjamin90@gmail.com",
       decription="A utility to launch jupyter lab remotely.",
       package_data={
-          '': ['*org'],
+          '': ['*rst'],
       },
       url="https://github.com/KrotosBenjamin/erwin_paquola/tree/master/jupy",
-      license='GPLv3',
+      # license='GPLv3',
       classifiers=[
           "Programming Language :: Python :: 3",
-          "License :: OSI Approved :: GNU General Public License v3",
+          "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
       ],
       keywords='jupyter jupyterlab ssh remote',
       zip_safe=False)
