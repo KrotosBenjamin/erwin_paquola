@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 LONG_DESCRIPTION="""
 feature_elimination - A package for preforming feature elimination
-================================================
+==================================================================
 
 ``feature_elimination`` is a package for feature elimination currently
 only supports random forest classification.
