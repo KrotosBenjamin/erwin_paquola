@@ -15,9 +15,9 @@ If using please cite: XXX.
 
 ** Reference Manual
 
-| Function Name         | Description                                                                                        |
-|-----------------------+----------------------------------------------------------------------------------------------------|
-| [[refsec:one][feature_elimination]]   | Runs random forest classification feature elimination                                              |
+| Function Name       | Description                                                                                        |
+|---------------------+----------------------------------------------------------------------------------------------------|
+| [[refsec:one][feature_elimination]] | Runs random forest classification feature elimination                                              |
 | [[refsec:two][features_rank_fnc]]   | Rank features                                                                                      |
 | [[refsec:three][n_features_iter]]     | Determines the features to keep                                                                    |
 | [[refsec:four][oob_predictions]]     | Extracts out-of-bag (OOB) predictions from random forest classifier classes                        |
@@ -29,7 +29,7 @@ If using please cite: XXX.
 | [[refsec:ten][plot_roc]]            | Plot feature elimination with AUC ROC curve as measurement                                         |
 | [[refsec:eleven][rf_fe]]               | Iterate over features to be eliminated                                                             |
 | [[refsec:twelve][rf_fe_step]]          | Apply random forest to training data, rank features, and conduct feature elimination (single step) |
-|                       |                                                                                                    |
+|                     |                                                                                                    |
 
 *** feature_elimination
 <<refsec:one>>
