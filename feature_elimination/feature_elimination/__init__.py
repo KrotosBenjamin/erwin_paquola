@@ -1,1 +1,1 @@
-from feature_elimination import *
+from .feature_elimination import *
