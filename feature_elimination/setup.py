@@ -1,76 +1,308 @@
 from setuptools import setup, find_packages
 
 LONG_DESCRIPTION="""
-jupy - A utility to launch jupyter lab remotely.
+feature_elimination - A package for preforming feature elimination
 ================================================
 
-**jupy** is a utility that automatically finds an available port via **ss**, **ssh**
-into the server, making an ssh tunnel, calls jupyter lab.
+``feature_elimination`` is a package for feature elimination currently
+only supports random forest classification.
 
-Please install on your computer and host server to automatically
-download jupyter lab.
+-  Future implementation will include:
 
-Authors: Apuã Paquola, Kynon Benjamin
+   -  random forest regression
+   -  linear regression
+
+Authors: Apuã Paquola, Kynon Benjamin, and Tarun Katipalli
+
+If using please cite: XXX.
+
+Table of Contents
+=================
+
+-  `Installation <#installation>`__
+-  `Reference Manual <#reference-manual>`__
 
 Installation
-------------
+============
 
-``pip install --user jupy``
+``pip install --user feature_elimination``
 
-Requires: ``ssh`` and ``ss``
+Reference Manual
+================
 
-Does not currently work for Mac OS.
+============================================================ ==================================================================================================
+Function                                                     Description
+============================================================ ==================================================================================================
+`feature_elimination <#feature-elimination-main>`__          Runs random forest classification feature elimination
+`features_rank_fnc <#feature-rank-function>`__               Rank features
+`n_features_iter <#n-feature-iterator>`__                    Determines the features to keep
+`oob_predictions <#oob-prediction>`__                        Extracts out-of-bag (OOB) predictions from random forest classifier classes
+`oob_score_accuracy <#oob-accuracy-score>`__                 Calculates the accuracy score for the OOB predictions
+`oob_score_nmi <#oob-normalized-mutual-information-score>`__ Calculates the normalized mutual information score for the OOB predictions
+`oob_score_roc <#oob-area-under-roc-curve-score>`__          Calculates the area under the ROC curve (AUC) for the OOB predictions
+`plot_acc <#plot-feature-elimination-by-accuracy>`__         Plot feature elimination with accuracy as measurement
+`plot_nmi <#plot-feature-elimination-by-nmi>`__              Plot feature elimination with NMI as measurement
+`plot_roc <#plot-feature-elimination-by-auc>`__              Plot feature elimination with AUC ROC curve as measurement
+`rf_fe <#feature-elimination-subfunction>`__                 Iterate over features to be eliminated
+`rf_fe_step <#feature-elimination-step>`__                   Apply random forest to training data, rank features, and conduct feature elimination (single step)
+============================================================ ==================================================================================================
 
-Manual
-------
+Feature Elimination Main
+------------------------
 
-``usage: jupy [-h] [--host HOST] [--dir DIR] [--username USERNAME] [--default-port DEFAULT_PORT]``
+``feature_elimination``
 
-============== ============================ ==========
-Flag          Description                  Example
-============== ============================ ==========
--–host         server to ssh                1.1.1.1
--–dir          directory to run jupyter lab /ceph
--–username     username on server           myusername
--–default-port localhost port               8888
---version, -v  print version                jupy 0.2.1
-============== ============================ ==========
+Runs random forest feature elimination step over iterator process.
 
-Change logs
------------
-v0.2.1
-------
+**Args:**
 
--  Added version flag
+-  estimator: Random forest classifier object
+-  X: a data frame of training data
+-  Y: a vector of sample labels from training data set
+-  features: a vector of feature names
+-  fold: current fold
+-  out_dir: output directory. default '.'
+-  elimination_rate: percent rate to reduce feature list.
+   default .2
+-  RANK: Output feature ranking. default=True (Boolean)
 
-v0.2
-~~~~
+**Yields:**
 
--  Launches jupyter-lab instead of jupyter-notebook
--  added function to specify username, default is to use local username
+-  dict: a dictionary with number of features, normalized mutual
+   information score, accuracy score, and AUC ROC score, array of the 
+   indexes for features to keep
+
+Feature Rank Function
+---------------------
+
+``feature_rank_fnc``
+
+Ranks features.
+
+**Args:**
+
+-  features: A vector of feature names
+-  rank: A vector with feature ranks based on absolute value of feature
+   importance
+-  n_features_to_keep: Number of features to keep. (Int)
+-  fold: Fold to analyzed. (Int)
+-  out_dir: Output directory for text file. Default '.'
+-  RANK: Boolean (True or False)
+
+**Yields:**
+
+-  Text file: Ranked features by fold tab-delimited text file, only if
+   RANK=True
+
+N Feature Iterator
+------------------
+
+``n_features_iter``
+
+Determines the features to keep.
+
+**Args:**
+
+-  nf: current number of features
+-  keep_rate: percentage of features to keep
+
+**Yields:**
+
+-  int: number of features to keep
+
+OOB Prediction
+--------------
+
+``oob_predictions``
+
+Extracts out-of-bag (OOB) predictions from random forest classifier
+classes.
+
+**Args:**
+
+-  estimator: Random forest classifier object
+
+**Yields:**
+
+-  vector: OOB predicted labels
+
+OOB Accuracy Score
+------------------
+
+``oob_score_accuracy``
+
+Calculates the accuracy score from the OOB predictions.
+
+**Args:**
+
+-  estimator: Random forest classifier object
+-  Y: a vector of sample labels from training data set
+
+**Yields:**
+
+-  float: accuracy score
+
+OOB Normalized Mutual Information Score
+---------------------------------------
+
+``oob_score_nmi``
+
+Calculates the normalized mutual information score from the OOB
+predictions.
+
+**Args:**
+
+-  estimator: Random forest classifier object
+-  Y: a vector of sample labels from training data set
+
+**Yields:**
+
+-  float: normalized mutual information score
+
+OOB Area Under ROC Curve Score
+------------------------------
+
+``oob_score_roc``
+
+Calculates the area under the ROC curve score for the OOB predictions.
+
+**Args:**
+
+-  estimator: Random forest classifier object
+-  Y: a vector of sample labels from training data set
+
+**Yields:**
+
+-  float: AUC ROC score
+
+Plot Feature Elimination by Accuracy
+------------------------------------
+
+``plot_acc``
+
+Plot feature elimination results for accuracy.
+
+**Args:**
+
+-  d: feature elimination class dictionary
+-  fold: current fold
+-  out_dir: output directory. default '.'
+
+**Yields:**
+
+-  graph: plot of feature by accuracy, automatically saves files as png
+   and svg
+
+Plot Feature Elimination by NMI
+-------------------------------
+
+``plot_nmi``
+
+Plot feature elimination results for normalized mutual information.
+
+**Args:**
+
+-  d: feature elimination class dictionary
+-  fold: current fold
+-  out_dir: output directory. default '.'
+
+**Yields:**
+
+-  graph: plot of feature by NMI, automatically saves files as png and
+   svg
+
+Plot Feature Elimination by AUC
+-------------------------------
+
+``plot_roc``
+
+Plot feature elimination results for AUC ROC curve.
+
+**Args:**
+
+-  d: feature elimination class dictionary
+-  fold: current fold
+-  out_dir: output directory. default '.'
+
+**Yields:**
+
+-  graph: plot of feature by AUC, automatically saves files as png and
+   svg
+
+Feature Elimination Subfunction
+-------------------------------
+
+``rf_fe``
+
+Iterate over features to by eliminated by step.
+
+**Args:**
+
+-  estimator: Random forest classifier object
+-  X: a data frame of training data
+-  Y: a vector of sample labels from training data set
+-  n_features_iter`: iterator for number of features to keep loop
+-  features: a vector of feature names
+-  fold: current fold
+-  out_dir: output directory. default '.'
+-  RANK: Boolean (True or False)
+
+**Yields:**
+
+-  list: a list with number of features, normalized mutual information
+   score, accuracy score, and AUC ROC score, array of the indices for 
+   features to keep
+
+Feature Elimination Step
+------------------------
+
+``rf_fe_step``
+
+Apply random forest to training data, rank features, conduct feature
+elimination.
+
+**Args:**
+
+-  estimator: Random forest classifier object
+-  X: a data frame of training data
+-  Y: a vector of sample labels from training data set
+-  n_features_to_keep`: number of features to keep
+-  features: a vector of feature names
+-  fold: current fold
+-  out_dir: output directory. default '.'
+-  RANK: Boolean (True or False)
+
+**Yields:**
+
+-  dict: a dictionary with number of features, normalized mutual
+   information score, accuracy score, AUC ROC score, and selected 
+   features
+
 """
 
-setup(name='jupy',
-      version='0.2.1',
+setup(name='feature_elimination',
+      version='0.0.1',
       packages=find_packages(),
-      scripts=['jupy'],
+      scripts=['feature_elimination.py'],
       install_requires=[
-          'jupyterlab>=1.2.3',
-          'argparse>=1.1'
+          'numpy>=1.17.4',
+          'pandas>=0.25.3',
+          'matplotlib>=3.1.1',
+          'plotnine>=0.6.0',
+          'scikit>=0.22',
       ],
       author="Kynon Benjamin",
       author_email="kj.benjamin90@gmail.com",
-      decription="A utility to launch jupyter lab remotely.",
+      decription="A package for preforming feature elimination",
       long_description=LONG_DESCRIPTION,
       long_description_content_type='text/x-rst',
       package_data={
           '': ['*org'],
       },
-      url="https://github.com/KrotosBenjamin/erwin_paquola/tree/master/jupy",
-      # license='GPLv3',
+      url="https://github.com/KrotosBenjamin/erwin_paquola/tree/master/feature_elimination",
       classifiers=[
           "Programming Language :: Python :: 3",
           "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
       ],
-      keywords='jupyter jupyterlab ssh remote',
+      keywords='random-forest feature-elimination scikit',
       zip_safe=False)
