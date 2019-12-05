@@ -281,9 +281,8 @@ elimination.
 """
 
 setup(name='feature_elimination',
-      version='0.0.1',
+      version='0.0.1c',
       packages=find_packages(),
-      scripts=['feature_elimination.py'],
       install_requires=[
           'numpy>=1.17.4',
           'pandas>=0.25.3',
