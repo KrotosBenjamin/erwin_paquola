@@ -17,21 +17,21 @@ If using please cite: XXX.
 
 | Function Name         | Description                                                                                        |
 |-----------------------+----------------------------------------------------------------------------------------------------|
-| [[refsec:one][=feature_elimination=]] | Runs random forest classification feature elimination                                              |
-| [[refsec:two][=features_rank_fnc=]]   | Rank features                                                                                      |
-| [[refsec:three][=n_features_iter=]]     | Determines the features to keep                                                                    |
-| [[refsec:four][=oob_predictions=]]     | Extracts out-of-bag (OOB) predictions from random forest classifier classes                        |
-| [[refsec:five][=oob_score_accuracy=]]  | Calculates the accuracy score for the OOB predictions                                              |
-| [[refsec:six][=oob_score_nmi=]]       | Calculates the normalized mutual information score for the OOB predictions                         |
-| [[refsec:seven][=oob_score_roc=]]       | Calculates the area under the ROC curve (AUC) for the OOB predictions                              |
-| [[refsec:eight][=plot_acc=]]            | Plot feature elimination with accuracy as measurement                                              |
-| [[refsec:nine][=plot_nmi=]]            | Plot feature elimination with NMI as measurement                                                   |
-| [[refsec:ten][=plot_roc=]]            | Plot feature elimination with AUC ROC curve as measurement                                         |
-| [[refsec:eleven][=rf_fe=]]               | Iterate over features to be eliminated                                                             |
-| [[refsec:twelve][=rf_fe_step=]]          | Apply random forest to training data, rank features, and conduct feature elimination (single step) |
+| [[refsec:one][feature_elimination]]   | Runs random forest classification feature elimination                                              |
+| [[refsec:two][features_rank_fnc]]   | Rank features                                                                                      |
+| [[refsec:three][n_features_iter]]     | Determines the features to keep                                                                    |
+| [[refsec:four][oob_predictions]]     | Extracts out-of-bag (OOB) predictions from random forest classifier classes                        |
+| [[refsec:five][oob_score_accuracy]]  | Calculates the accuracy score for the OOB predictions                                              |
+| [[refsec:six][oob_score_nmi]]       | Calculates the normalized mutual information score for the OOB predictions                         |
+| [[refsec:seven][oob_score_roc]]       | Calculates the area under the ROC curve (AUC) for the OOB predictions                              |
+| [[refsec:eight][plot_acc]]            | Plot feature elimination with accuracy as measurement                                              |
+| [[refsec:nine][plot_nmi]]            | Plot feature elimination with NMI as measurement                                                   |
+| [[refsec:ten][plot_roc]]            | Plot feature elimination with AUC ROC curve as measurement                                         |
+| [[refsec:eleven][rf_fe]]               | Iterate over features to be eliminated                                                             |
+| [[refsec:twelve][rf_fe_step]]          | Apply random forest to training data, rank features, and conduct feature elimination (single step) |
 |                       |                                                                                                    |
 
-*** =feature_elimination=
+*** feature_elimination
 <<refsec:one>>
 
 Runs random forest feature elimination step over iterator process.
@@ -48,7 +48,7 @@ Runs random forest feature elimination step over iterator process.
 
 *Yields:*
   + dict: a dictionary with number of features, normalized mutual information score, accuracy score, and array of the indexes for features to keep
-*** =feature_rank_fnc=
+*** feature_rank_fnc
 <<refsec:two>>
 
 Ranks features.
@@ -63,7 +63,7 @@ Ranks features.
 
 *Yields:*
  + Text file: Ranked features by fold tab-delimited text file, only if RANK=True
-*** =n_features_iter=
+*** n_features_iter
 <<refsec:three>>
 
 Determines the features to keep.
@@ -74,7 +74,7 @@ Determines the features to keep.
 
 *Yields:*
  + int: number of features to keep
-*** =oob_predictions=
+*** oob_predictions
 <<refsec:four>>
 
 Extracts out-of-bag (OOB) predictions from random forest classifier classes.
@@ -84,7 +84,7 @@ Extracts out-of-bag (OOB) predictions from random forest classifier classes.
 
 *Yields:*
   + vector: OOB predicted labels
-*** =oob_score_accuracy=
+*** oob_score_accuracy
 <<refsec:five>>
 
 Calculates the accuracy score from the OOB predictions.
@@ -95,7 +95,7 @@ Calculates the accuracy score from the OOB predictions.
 
 *Yields:*
   + float: accuracy score
-*** =oob_score_nmi=
+*** oob_score_nmi
 <<refsec:six>>
 
 Calculates the normalized mutual information score from the OOB predictions.
@@ -106,7 +106,7 @@ Calculates the normalized mutual information score from the OOB predictions.
 
 *Yields:*
   + float: normalized mutual information score
-*** =oob_score_roc=
+*** oob_score_roc
 <<refsec:seven>>
 
 Calculates the area under the ROC curve score for the OOB predictions.
@@ -117,7 +117,7 @@ Calculates the area under the ROC curve score for the OOB predictions.
 
 *Yields:*
   + float: AUC ROC score
-*** =plot_acc=
+*** plot_acc
 <<refsec:eight>>
 
 Plot feature elimination results for accuracy.
@@ -129,7 +129,7 @@ Plot feature elimination results for accuracy.
 
 *Yields:*
   + graph: plot of feature by accuracy, automatically saves files as png and svg
-*** =plot_nmi=
+*** plot_nmi
 <<refsec:nine>>
 
 Plot feature elimination results for normalized mutual information.
@@ -141,7 +141,7 @@ Plot feature elimination results for normalized mutual information.
 
 *Yields:*
   + graph: plot of feature by NMI, automatically saves files as png and svg
-*** =plot_roc=
+*** plot_roc
 <<refsec:ten>>
 
 Plot feature elimination results for AUC ROC curve.
@@ -153,7 +153,7 @@ Plot feature elimination results for AUC ROC curve.
 
 *Yields:*
   + graph: plot of feature by AUC, automatically saves files as png and svg
-*** =rf_fe=
+*** rf_fe
 <<refsec:eleven>>
 
 Iterate over features to by eliminated by step.
@@ -170,7 +170,7 @@ Iterate over features to by eliminated by step.
 
 *Yields:*
   + list: a list with number of features, normalized mutual information score, accuracy score, and array of the indices for features to keep
-*** =rf_fe_step=
+*** rf_fe_step
 <<refsec:twelve>>
 
 Apply random forest to training data, rank features, conduct feature elimination.
