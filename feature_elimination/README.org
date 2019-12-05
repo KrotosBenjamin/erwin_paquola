@@ -1,4 +1,4 @@
-* =feature_elimination= - A package for preforming feature elimination
+* feature_elimination - A package for preforming feature elimination
 
 This is a package for feature elimination currently only supports random forest classification.
 
