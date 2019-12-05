@@ -281,7 +281,7 @@ elimination.
 """
 
 setup(name='feature_elimination',
-      version='0.0.1c',
+      version='0.0.4',
       packages=find_packages(),
       install_requires=[
           'numpy>=1.17.4',
