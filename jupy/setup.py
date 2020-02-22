@@ -33,11 +33,16 @@ Flag          Description                  Example
 -–dir          directory to run jupyter lab /ceph
 -–username     username on server           myusername
 -–default-port localhost port               8888
---version, -v  print version                jupy 0.2.1
+--version, -v  print version                jupy 0.2.2
 ============== ============================ ==========
 
 Change logs
 -----------
+v0.2.2
+------
+
+-  Fixed $HOME directory bug. Now, autodetects $HOME
+
 v0.2.1
 ------
 
@@ -51,7 +56,7 @@ v0.2
 """
 
 setup(name='jupy',
-      version='0.2.1',
+      version='0.2.2',
       packages=find_packages(),
       scripts=['jupy'],
       install_requires=[
