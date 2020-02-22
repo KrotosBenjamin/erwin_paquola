@@ -27,7 +27,7 @@ Manual
 ``usage: jupy [-h] [--host HOST] [--dir DIR] [--username USERNAME] [--default-port DEFAULT_PORT]``
 
 ============== ============================ ==========
-Flag          Description                  Example
+Flag           Description                  Example
 ============== ============================ ==========
 -–host         server to ssh                1.1.1.1
 -–dir          directory to run jupyter lab /ceph
