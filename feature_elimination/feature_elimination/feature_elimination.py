@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #!/usr/bin/env python
 """ 
 This package has several function to run feature elimination for random forest classifier. Specifically,
@@ -26,6 +25,8 @@ from plotnine import *
 from warnings import filterwarnings
 from matplotlib.cbook import mplDeprecation
 filterwarnings("ignore", category=mplDeprecation)
+filterwarnings('ignore', category=UserWarning, module='plotnine.*')
+filterwarnings('ignore', category=DeprecationWarning, module='plotnine.*')
 
 
 def features_rank_fnc(features, rank, n_features_to_keep, fold, out_dir, RANK):
@@ -107,8 +108,9 @@ def oob_score_roc(estimator, Y):
     Yields:
     float: AUC ROC score    
     """
-    labels_pred = oob_predictions(estimator)
-    return roc_auc_score(Y, labels_pred)
+    labels_pred = estimator.oob_decision_function_
+    kwargs = {'multi_class': 'ovr'} if len(np.unique(Y)) > 2 else {}
+    return roc_auc_score(Y, labels_pred, **kwargs)
 
 
 def oob_score_nmi(estimator, Y):
@@ -231,6 +233,12 @@ def feature_elimination(estimator, X, Y, features, fold, out_dir='.',
     return d, pfirst
 
 
+def save_plot(p, fn, width=7, height=7):
+    '''Save plot as svg, png, and pdf with specific label and dimension.'''
+    for ext in ['.svg', '.png', '.pdf']:
+        p.save(fn+ext, width=width, height=height)
+        
+
 def plot_nmi(d, fold, output_dir):
     """
     Plot feature elimination results for normalized mutual information.
@@ -247,8 +255,7 @@ def plot_nmi(d, fold, output_dir):
                              'normalized mutual information':d[k][1]} for k in d.keys()])
     gg = ggplot(df_elim, aes(x='n features', y='normalized mutual information'))\
         + geom_point() + scale_x_log10() + theme_light()
-    gg.save(output_dir+"/nmi_fold_%d.png" % (fold))
-    gg.save(output_dir+"/nmi_fold_%d.svg" % (fold))
+    save_plot(gg, output_dir+"/nmi_fold_%d" % (fold))
     print(gg)
 
 
@@ -268,8 +275,7 @@ def plot_roc(d, fold, output_dir):
                              'ROC AUC':d[k][3]} for k in d.keys()])
     gg = ggplot(df_elim, aes(x='n features', y='ROC AUC'))\
         + geom_point() + scale_x_log10() + theme_light()
-    gg.save(output_dir+"/roc_fold_%d.png" % (fold))
-    gg.save(output_dir+"/roc_fold_%d.svg" % (fold))
+    save_plot(gg, output_dir+"/roc_fold_%d" % (fold))
     print(gg)
 
 
@@ -289,8 +295,7 @@ def plot_acc(d, fold, output_dir):
                              'Accuracy':d[k][3]} for k in d.keys()])
     gg = ggplot(df_elim, aes(x='n features', y='Accuracy'))\
         + geom_point() + scale_x_log10() + theme_light()
-    gg.save(output_dir+"/acc_fold_%d.png" % (fold))
-    gg.save(output_dir+"/acc_fold_%d.svg" % (fold))
+    save_plot(gg, output_dir+"/acc_fold_%d" % (fold))
     print(gg)
 
 
@@ -307,6 +312,3 @@ def plot_acc(d, fold, output_dir):
 #     gg.save(output_dir+"/scores_wgt_%.2f.png" % (alpha))
 #     gg.save(output_dir+"/scores_wgt_%.2f.svg" % (alpha))
 #     print(gg)
-=======
-from .feature_elimination import *
->>>>>>> dd89feeab71f2c747b086d03585d247ed9a0b1a4
