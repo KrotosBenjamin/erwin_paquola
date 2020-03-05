@@ -38,12 +38,17 @@ def get_available_port(default_port, host, username):
     return i
 
 
-def jupyter_command(directory, port):
-    return """cd '%s'; $HOME/.local/bin/jupyter-lab --no-browser --port=%d""" \
+def jupyter_command(directory, port, lab):
+    if lab:
+        cmd = """cd '%s';export PATH=$HOME/.local/bin:$PATH;jupyter-lab --no-browser --port=%d""" \
         %(directory, port)
+    else:
+        cmd = """cd '%s';jupyter-notebook --no-browser --port=%d""" \
+        %(directory, port)
+    return cmd
 
 
-def run_remote_jupyter(host, directory, port, username):
+def run_remote_jupyter(host, directory, port, username, lab):
     with subprocess.Popen(['ssh',
                            '-t',
                            '-l',
@@ -51,7 +56,7 @@ def run_remote_jupyter(host, directory, port, username):
                            '-L',
                            'localhost:%d:localhost:%d' % (port, port),
                            host,
-                           jupyter_command(directory, port)],
+                           jupyter_command(directory, port, lab)],
                           stdout=subprocess.PIPE) as p:
         url_found = False
         for line in p.stdout:
@@ -75,12 +80,13 @@ def main():
     parser.add_argument('--dir', default=os.getcwd())
     parser.add_argument('--username', default=getpass.getuser())
     parser.add_argument('--default-port', type=int, default=8888)
+    parser.add_argument('--use-lab', action="store_true", help='use jupyter lab')
     parser.add_argument('-v', '--version', action='version',
-                        version='%(prog)s 0.2.2', help="Prints current version.")
+                        version='%(prog)s 0.2.3', help="Prints current version.")
     args=parser.parse_args()
 
     port = get_available_port(args.default_port, args.host, args.username)
-    run_remote_jupyter(args.host, args.dir, port, args.username)
+    run_remote_jupyter(args.host, args.dir, port, args.username, args.use_lab)
 
                        
 if __name__ == '__main__':
